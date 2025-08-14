@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="no"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aksjeanalyse – PWA</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0a4999">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+body{font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:16px}
+h1{font-size:1.2rem;margin:0 0 8px} .card{border:1px solid #ddd;border-radius:12px;padding:12px;margin:12px 0}
+input,button{font-size:1rem;padding:10px;border-radius:10px;border:1px solid #ccc}
+table{width:100%;border-collapse:collapse;font-size:.9rem} th,td{border-bottom:1px solid #eee;padding:6px 4px;text-align:left;white-space:nowrap}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #ddd} .buy{background:#e7ffe7} .sell{background:#ffe7e7}
+</style></head>
+<body>
+<h1>Aksjeanalyse – PWA</h1>
+<div class="card">
+  <p>Last opp en <b>Yahoo Finance</b>-CSV. Alt kjører <b>lokalt</b> og fungerer <b>offline</b> etter første besøk.</p>
+  <input type="file" id="file" accept=".csv">
+  <button id="loadBtn">Last inn</button>
+  <button id="analyzeBtn">Kjør analyse</button>
+  <button id="exportBtn">Eksporter CSV</button>
+  <a href="TEST_BUY_SIGNALS.csv" download>Last ned test-CSV</a>
+  <div id="meta" style="color:#666;margin-top:6px"></div>
+</div>
+<div class="card">
+  <div style="overflow:auto;max-height:60vh">
+    <table id="table"><thead><tr>
+      <th>Date</th><th>Open</th><th>Close</th><th>EMA20</th><th>EMA50</th><th>RSI14</th><th>KJØP</th><th>SALG</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+  <div id="stats" style="color:#666;margin-top:6px"></div>
+</div>
+<script>if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'))}</script>
+<script src="app.js"></script>
+</body></html>
